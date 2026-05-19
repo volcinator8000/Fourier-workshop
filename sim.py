@@ -6,9 +6,12 @@ import matplotlib.pyplot as plt
 from matplotlib.widgets import Slider, TextBox
 import matplotlib.gridspec as gridspec
 
+
 # ---------------------------------------------------------
 # 1. Define Initial State and Time
 # ---------------------------------------------------------
+
+
 t = np.linspace(0, 4, 1000)
 f1 = 3.0
 f2 = 5.0
@@ -34,9 +37,12 @@ def calc_fourier_transform(sig):
 
 ft_x_coords, ft_magnitudes = calc_fourier_transform(signal)
 
+
 # ---------------------------------------------------------
 # 2. Setup the Figure and Grid Layout
 # ---------------------------------------------------------
+
+
 fig = plt.figure(figsize=(14, 10))
 # Slightly increased wspace/hspace to prevent labels from overlapping
 gs = gridspec.GridSpec(3, 2, height_ratios=[1, 1.5, 1.2], bottom=0.15, top=0.85, hspace=0.6, wspace=0.25)
@@ -90,9 +96,12 @@ ax_ft_mag.set_xlim(0, 10)
 ax_ft_mag.set_ylim(-0.1, 0.6)
 ax_ft_mag.axhline(0, color='gray', linewidth=0.5)
 
+
 # ---------------------------------------------------------
 # 3. Initialize Interactive Winding Machine
 # ---------------------------------------------------------
+
+
 init_freq = 1.0
 
 def wind_signal(sig, time_array, wind_freq):
@@ -110,9 +119,12 @@ center_point, = ax_wind.plot(cx, cy, 'ro', markersize=8)
 ft_dot_x, = ax_ft_x.plot([init_freq], [cx], 'ro', markersize=8)
 ft_dot_mag, = ax_ft_mag.plot([init_freq], [magnitude], 'ro', markersize=8)
 
+
 # ---------------------------------------------------------
 # 4. Add the Controls (Slider & TextBoxes)
 # ---------------------------------------------------------
+
+
 ax_slider = plt.axes([0.15, 0.05, 0.55, 0.03])
 freq_slider = Slider(ax=ax_slider, label='Winding Freq (Hz)', valmin=0.0, valmax=10.0, valinit=init_freq)
 
@@ -125,9 +137,12 @@ text_box1 = TextBox(ax_box1, 'Freq 1 (Hz): ', initial=str(f1))
 ax_box2 = plt.axes([0.60, 0.90, 0.15, 0.04])
 text_box2 = TextBox(ax_box2, 'Freq 2 (Hz): ', initial=str(f2))
 
+
 # ---------------------------------------------------------
 # 5. Interactive Update Logic
 # ---------------------------------------------------------
+
+
 def update_slider(val):
     freq = freq_slider.val
     # Recalculate winding machine
